@@ -3,6 +3,8 @@ package Commands;
 import Collection.Movie;
 import Utilities.Response;
 
+import java.util.stream.Collectors;
+
 public class FilterStartsWithName implements Command{
 
 
@@ -13,13 +15,16 @@ public class FilterStartsWithName implements Command{
         } else {
             long counter = movies.stream()
                     .filter(movie -> movie.getName().startsWith(args))
-                    .peek(System.out::println)
                     .count();
 
             if (counter == 0) return new Response("Movie с полями name, начинающимися на " + args + ", нет");
         }
 
-        return new Response("");
+        return new Response(movies.stream()
+                .map(Movie::getName)
+                .filter(name -> name.startsWith(args))
+                .collect(Collectors.joining(", ")));
+
     }
 
     @Override
