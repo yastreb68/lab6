@@ -6,6 +6,8 @@ import java.io.Serializable;
 public class Request implements Serializable {
     @Serial
     private static final long serialVersionUID = 5252L;
+    
+
     private String commandName;
     private String commandStrArg;
     private Serializable commandObjArg;
@@ -19,6 +21,8 @@ public class Request implements Serializable {
     public Request(String commandName, String commandStrArg) {
         this(commandName, commandStrArg, null);
     }
+
+
 
     public String getCommandName() {
         return commandName;

@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Response implements Serializable {
     @Serial
     private static final long serialVersionUID = 52L;
-    private String message;
+    private final String message;
 
     public Response(String message) {
         this.message = message;
